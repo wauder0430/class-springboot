@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    >
+<head>
+    <meta charset="UTF-8">
+    <title>oauth2</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+    <!-- index.html -->
+    <div th:replace="~{inc/header.html :: header}"></div>
+    
+    <h2>Index</h2>
+    <p>시작 페이지입니다.</p>
+    
+    <th:block sec:authorize="isAuthenticated()">
+        <div class="message" title="pricipal" sec:authentication="principal"></div>    
+        <div class="message" title="pricipalemail" sec:authentication="principal.email"></div>
+        <div class="message" title="pricipalname" sec:authentication="principal.name"></div>
+        <div class="message" title="pricipalusername" sec:authentication="principal.username"></div>    
+        <div class="message" title="pricipaldto" sec:authentication="principal.dto"></div>    
+    </th:block>
+    
+   
+    
+</body>
+</html>

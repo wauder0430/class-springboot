@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Thymeleaf</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+	<!-- m10.html -->
+    
+    <!--  
+        조각 페이지
+        - templates > "inc" > "sub1.html"
+        
+        1. th:fragment
+        
+        2. th:insert
+        
+        3. th:replace
+    -->
+    <h1>Thymeleaf Fragment</h1>
+    
+    <div th:insert="~{inc/sub1.html}"></div>
+    <div th:replace="~{inc/sub1.html}"></div>
+    
+    <div th:insert="~{inc/sub1.html}">권장</div>
+    <div th:insert="~{inc/sub1}"></div>
+    <div th:insert="inc/sub1"></div>
+    
+    <hr>
+    
+    <div th:insert="~{inc/sub2.html :: tel}"></div>
+    
+    <hr>
+    <div th:insert="~{inc/sub2.html :: address}"></div>
+    
+    <hr>
+    
+    <div th:replace="~{inc/sub2.html :: title('게시판', '수정하기')}"></div>
+    
+    <hr>
+    
+    <div th:replace="~{inc/sub2.html :: title('회원', '가입하기')}"></div>
+    
+</body>
+</html>

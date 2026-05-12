@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Thymeleaf</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+	<!-- m4.html -->
+    <h1>HTML 속성 조작하기</h1>
+	
+    <!--  
+    
+        뷰 역할
+        - 컨트롤러 > (값) 화면 제작(출력, CSS, JavaScript 등)
+        - 값 + 적절한 위치 바인딩(***)
+            - JSP: EL + JSTL
+            - Thymeleaf: 변수 표현식, 선택 변수 표현식
+    
+    
+        규칙
+        1. 타임리프 문법은 th:xxx 속성에서만 적용할 수 있다.
+        2. 태그가 가지는 대부분의 속성에는 th: 를 붙일 수 있다. 
+    -->
+    
+    <div>
+        <!-- PCDATA: innerText, textContent 역할 -->
+        <div th:text="${count}"></div>    
+        <br>
+        
+        <input type="text" value="100">
+        <br>
+        
+        <input type="text" value="${count}">
+        <br>
+        
+        <input type="text" th:value="${count}" th:title="${name}" th:size="${count} - 50" th:style="|background-color: ${color}|">
+        
+        
+    </div>
+    
+    <div>
+        <input type="checkbox" checked>    
+        <input type="checkbox" th:checked="true">
+        <input type="checkbox" th:checked="false">
+        <input type="checkbox" th:checked="${count > 0}">
+    </div>
+    
+    <div>
+        <select>
+            <option value="아무개" th:selected="${name == '아무개'}">아무개</option>
+            <option value="강아지" th:selected="${name == '강아지'}">강아지</option>
+            <option value="고양이" th:selected="${name == '고양이'}">고양이</option>
+        </select>
+    </div>
+    
+</body>
+</html>

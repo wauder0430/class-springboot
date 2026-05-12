@@ -1,0 +1,63 @@
+프로젝트 생성
+- Name: "thymeleaf" (v)
+- Language: Java
+- Type: Gradle - Groovy
+- Group: "com.test"
+- Artifact: "thymeleaf"
+- Package name: "com.test.java"
+- Java: 21
+- Packaging: jar
+- Dependencies: (v)
+    - Spring Web
+    - Lombok
+    - Oracle Driver
+    - MyBatis Framework
+    - Thymeleaf
+    - Spring Boot DevTools //파일 수정 > 프로젝트 자동 새로 고침
+
+
+
+Thymeleaf
+- 자바 템플릿 엔진 > 뷰 페이지를 만드는 기술
+- 서버 측에서 동적으로 HTML을 생성하는 기술 > SSR
+- JSP 역할(JSP는 톰캣에 종속적)
+- Thymeleaf(공식), Mustach, Freemaker, Velocity 등..
+
+
+
+MyBatis 설정
+- resources > application.properties
+
+
+MyBatis 실행 방식
+1. XML Mapper
+    - DAO > SqlSessionTemplate 사용 + address.xml
+2. Interface Mapper
+    - DAO > AddressMapper.java(I) 사용 + AddressMapper.xml
+    - 2.2 > 생략 가능
+    
+    2.1 XML 파일명과 인터페이스명이 동일해야 한다.
+    2.2 인터페이지의 패키지 구조와 XML 파일의 폴더 구조가 동일해야 한다.
+    2.3 XML의 네임스페이스를 인터페이스 풀 경로로 작성한다.
+
+
+
+
+파일 생성하기
+- "com.test.java.controller" > "TestController.java"
+- "com.test.java.mapper" > "AddressMapper.java" (I)
+- "com.test.java.model" > "AddressDto.java"
+
+- templates > "ex01.html" // 타임리프 페이지
+
+
+
+
+
+
+
+
+
+
+
+    

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <!-- sub2.html -->
+    <div class="message" th:fragment="tel">연락처: 010-1234-5678</div>
+    <div class="message" th:fragment="address">오시는길: 서울시 강남구 대치동</div>
+    
+    <h1 th:fragment="title(main,sub)">
+        <th:block th:text="${main}">게시판 </th:block>
+        <small th:text="${sub}">글쓰기</small>
+    </h1>
+    
+</body>
+</html>

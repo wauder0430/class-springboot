@@ -1,0 +1,112 @@
+새폴더 생성
+- C:\code\springboot
+- C:\code\springai
+- C:\code\react
+
+점검
+- JDK > 21 확인 or 설치
+   - C:\Program Files\Eclipse Adoptium 
+- JAVA_HOME 확인
+     - 시스템 환경 변수
+     - C:\Program Files\Eclipse Adoptium\jdk-21.0.10.7-hotspot
+- PATH
+     - JDK 21 > 최상위
+$ java --version
+$ javac --version
+
+
+오라클
+- PDB 전환
+- springboot
+
+
+스프링 부트 개발 환경
+- JDK
+- 개발툴 > STS > https://spring.io
+    - STS3
+    - STS4
+    - STS5
+
+
+STS3 > STS4/STS5
+- STS(스프링 개발 전용 이클립스) 
+- Spring Boot
+
+
+Maven, Gradle
+- 프로젝트 빌드/관리 도구
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spring Boot
+- Spring 생태계에 있는 프로젝트 중 하나
+- 기존 스프링 환경 > 생성 + 설정 > 난이도 있음
+- 생성 + 설정 > 초기 설정과 관련된 많은 부분을 자동화
+- Spring Initializr
+
+
+Spring vs Spring Boot 동작 방식ㅁㅁ
+- Spring > 프로젝트를 톰캣을 등록 > 톰캣을 통해서 실행
+- Spring Boot > 사이트(X), 독립된 자바 프로그램(O) > 프로그램 내부에 톰캣이 내장
+
+
+루트 패키지
+- com.test.basic > OOOApplication.java
+
+
+폴더 구조
+- src/main/java
+    - 이전과 동일 > 자바 소스 폴더 > 패키지 or 파일
+    - com.test.basic > BasicApplication > 메인 클래스(main 클래스)
+    - @SpringBootApplication > 컴포넌트 스캔 역할
+    
+- src/main/resources
+    - 스프링 자원
+    - templates
+        - 이전의 views 폴더 역할
+        - 뷰 파일을 저장
+    - static
+        - 정적 자원(HTML, CSS, JavaScript, 이미지 등)
+        - 이전의 webapp > resources 역할
+    - application.properties / application.yml
+        - 스프링 부트 or 내장 톰캣 > 모든 설정 파일
+        - web.xml + root-context.xml + servlet-context.xml
+        
+- src/test/java
+    - 단위 테스트
+    - JUnit 5
+
+- src 접근안함
+
+- build.gradle
+    - Gradle 설정 파일
+    - Maven의 pom.xml 파일과 같은 역할
+
+
+
+
+
+
+
+

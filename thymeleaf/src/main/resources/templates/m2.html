@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<!-- m2.html -->
+    <h1>Thymeleaf</h1>
+    
+    <h2>변수 표현식</h2>
+    <ul>
+        <li th:text="${dto.seq}"></li>
+        <li th:text="${dto.name}"></li>
+        <li th:text="${dto.age}"></li>
+        <li th:text="${dto.gender}"></li>
+        <li th:text="${dto.name}"></li>
+    </ul>
+    
+    <h2>선택 변수 표현식</h2>
+    <ul th:object="${dto}">
+        <li th:text="*{seq}"></li>
+        <li th:text="*{name}"></li>
+        <li th:text="*{age}"></li>
+        <li th:text="*{gender}"></li>
+        <li th:text="*{name}"></li>
+    </ul>    
+    
+    <h2>선택 변수 표현식 맵</h2>
+    <ul th:object="${map}">
+        <li th:text="*{red}"></li>
+        <li th:text="*{yellow}"></li>
+        <li th:text="*{blue}"></li>
+    </ul>  
+        
+</body>
+</html>

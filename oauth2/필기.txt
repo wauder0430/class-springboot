@@ -1,0 +1,80 @@
+1. 애플리케이션 시작 
+    - 에러 > Datasource 미설정
+    - build.gradle > DB 주석
+    
+2. application.yml
+    - 기본 설정
+    - 시큐리티 관련 설정은 없음
+    
+3. 파일 생성하기 
+    - "com.test.java.controller" > "MainController"
+    - templates > "index.html"          // 시작
+                > "member.html"         // 회원
+                > "inc" > "header.html  // 메뉴
+                
+4. 시큐리티 설정하기
+    - "com.test.java.config" > SecurityConfig.java"
+    
+
+    
+OAuth2
+- 사용자가 자신의 계정 정보(아이디/암호)를 직접 공유하지 않고, 제 3자 애플리케이션이 사용자 특정 리소스에 접근할 수 있도록 권한을 부여하는 개방형 프로토콜
+- 사이트 구축 > 자체 인증(X) > 외부 신뢰할 사이트에게 인증 위임(O)
+- 소셜 로그인
+
+인증 필터
+- 처음 요청하는 로그인 시도 URL
+    - OAuth2AuthorizationRequestRedirectFilter
+        - /oauth2/authorization/서비스명
+        - /oauth2/authorization/naver
+        - /oauth2/authorization/kakao
+        - /oauth2/authorization/google
+
+- 인증 서버 > 코드를 반환받아 돌아오는 URL
+    - OAuth2LoginAuthenticationFilter
+        - /login/oauth2/code/서비스명
+        - /login/oauth2/code/naver
+        - /login/oauth2/code/kakao
+        - /login/oauth2/code/google
+        
+구글 > 소셜 로그인 신청하기
+- "google cloud console" 검색
+- 프로젝트 > (햄버거) > oauth 동의화면 > 클라이언트 > 시작하기 > 애플리케이션 만들기
+- > 클라이언트 > 승인된 리디렉션 URI
+    - - 인증 서버 > 코드를 반환받아 돌아오는 URL
+    - OAuth2LoginAuthenticationFilter
+        - /login/oauth2/code/서비스명
+        - /login/oauth2/code/naver
+        - /login/oauth2/code/kakao
+        - /login/oauth2/code/google
+        
+소셜 로그인 설정 + 사이트 설정
+- application.yml
+
+OAuth2 관련 작업
+- SecurityConfig.java > OAuth2 처리 추가
+- "com.test.java.dto" > "UserDto.java"
+                      > "CustomOAuth2User.java" // CustomUserDetails 인증 객체
+                      > "GoogleResponse.java"   // 구글에 반환하는 정보 객체
+- "com.test.java.entity" > "User.java"
+- "com.test.java.repository" > "UserRepository.java" (I)
+- "com.test.java.service" > "CustomOAuth2UserService.java" // CustomUserDetailsService 역할
+
+- SecurityConfig.java > OAuth2 로그인 설정 추가
+
+
+
+현재 작업 + DB 연동
+
+- 처음: 시작 > 로그인 > 구글 아이콘 클릭 > 구글 인증 > (개입) > 로그인 완료
+    1. DB 조회
+    2. 개인 정보 입력 페이지
+    3. DB 추가
+    
+- 재방문: 시작 > 로그인 > 구글 아이콘 클릭 > 구글 인증 > (개입) > 로그인 완료
+    1. DB조회
+
+- com.test.java.service > "CustomOAuth2LoginSuccessHandler.java"
+
+
+        

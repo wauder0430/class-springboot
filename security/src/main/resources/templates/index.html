@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    >
+<head>
+    <meta charset="UTF-8">
+    <title>Security</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+    <!-- index.html -->
+    <div th:replace="~{inc/header.html :: header}"></div>
+    
+    <h2>Index</h2>
+    <p>시작 페이지입니다.</p>
+    
+    <div class="message content">
+        <span sec:authorize="isAnonymous()">익명 사용자</span>
+        <span sec:authorize="isAuthenticated()">인증 사용자</span>
+    </div>
+    
+    
+    <th:block sec:authorize="isAuthenticated()">
+        <!-- username(아이디) -->
+        <div sec:authentication="name">아이디</div>
+        <!-- role(권한) -->
+        <div sec:authentication="principal">인증 객체(UserDetails)</div>
+        <div sec:authentication="principal.password">암호화된 비밀번호</div>
+        <div sec:authentication="principal.member"></div>
+        <div sec:authentication="principal.member.age"></div>
+        <div sec:authentication="principal.member.email"></div>
+        <div sec:authentication="principal.member.role"></div>
+    </th:block>
+    
+</body>
+</html>

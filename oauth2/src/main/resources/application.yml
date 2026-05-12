@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: oauth2
+  
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-name: google
+            client-id: 
+            client-secret: 
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
+            authorization-grant-type: authorization_code
+            scope: profile,email
+            # openId 사용금지
+
+# JDBC 설정
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: springboot
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    password: java1234
+    
+  # JPA 설정
+  jpa:
+    database: oracle
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernates:
+        format-sql: ture
+        highlight_sql: ture
+        
+# 쿼리가 콘솔에 로그 남기기
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug
+        orm:
+          jdbc:
+            bind: trace

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Thymeleaf</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+	<!-- m5.html -->
+    <h1>콘텐츠 조작</h1>
+	
+    <!--  
+        
+        <태그>내용물</태그>
+        - PCDATA 조작     > innerText(textContent)
+        - 자식 태그 조작  > InnerHTML 
+        
+        Thymeleaf Text
+        1. th:text
+            - escaped text
+            - innerText
+        
+        2. th:utext
+            - unescaped text
+            - innerHTML
+            
+        3. 인라인 출력
+            모든 태그 th:inline값을 가진다. (생략)
+            - th:inline="text" // default
+            - th:inline="javascript"
+            
+            - th:inline + [[표현]] > th:text
+            - th:inline + [(표현)] > th:utext
+        
+    -->
+    <div th:text="${txt1}"></div>
+    <div th:utext="${txt1}"></div>
+    <div th:inline="text">[[${txt1}]]</div>
+    <div>[[${txt1}]]</div>
+    
+    <hr>
+    
+    <div th:text="${txt2}"></div>
+    <div th:utext="${txt2}"></div>
+    <div>[[${txt2}]]</div>
+    <div>[(${txt2})]</div>
+    
+    <hr>
+    
+    <div id="list"></div>
+    
+    <script th:inline="text">
+        
+        // 컨트롤러가 건내준 값을 사용
+        let num1 = [[${num}]];
+        // alert(num1);        
+        
+        let name1 = '[[${name}]]';
+        // alert(name1);
+        
+        let dto1 = [[${dto}]];
+        
+        let names1 = [[${names}]];
+        
+        let list1 = [[${list}]];
+    
+    </script>
+    
+    <script th:inline="javascript">
+        
+        let num2 = [[${num}]];
+        let name2 = [[${name}]];
+        
+        //alert(num2);
+        //alert(name2);
+    
+        let dto2 = [[${dto}]];
+        // alert(dto2.address);
+        
+        let names2 = [[${names}]];
+        
+        let list2 = [[${list}]];
+        
+        // alert(list2[0].address);
+        
+        list2.forEach(dto => {
+            document.getElementById("list").innerHTML +=
+            `
+                <div>${dto.seq} - ${dto.name}(${dto.age}) - ${dto.address}</div>
+            `;
+        });
+        
+    </script>
+    
+</body>
+</html>

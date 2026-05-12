@@ -1,0 +1,87 @@
+
+
+Spring Security
+- 기본 Security(세션 기반)
+- OAuth2 > 소셜 로그인
+
+- JWT 
+
+- 세션(+OAuth2) vs JWT(+OAuth2)
+
+
+
+1. 애플리케이션 시작 
+    - 에러 > Datasource 미설정
+    - build.gradle > DB 주석
+    
+2. 다시 애플리케이션 시작
+    - /login
+    - user
+    
+3. application.yml
+    - 기본 설정
+    - 시큐리티 관련 설정은 없음
+    
+4. 파일 생성하기
+    - "com.test.java.controller" > "MainController"
+    - templates > "template.html"   
+                > "index.html"          // 시작
+                > "member.html"         // 회원
+                > "admin.html"          // 관리자
+                > "inc" > "header.html  // 메뉴
+          
+5. 각각 페이지 접속 > O
+
+6. 스프링 부트 시큐리티 설정하기
+    - 레거시  > security-context.xml
+    - 부트    > SecurityConfig.java
+                
+    - "com.test.java.config" > "SecurityConfig.java"
+    
+7. URI 허가하기
+
+8. 접속 테스트 
+    - /index 이외에는 403 차단
+   
+9. 커스텀 로그인 구현하기
+    - com.test.java.controller > "AuthController.java"
+    - templates > "login.html"
+    
+10. 회원 가입하기
+    - build.gradle > 주석해제
+    - application.yml > JDBC, JPA 설정
+    
+    - "script.sql"
+    - com.test.java.controller > "MemberController.java"
+    - "com.test.java.service > "MemberService.java"
+    - "com.test.java.repository > "MemberRepository.java"
+    - "com.test.java.entity> "Member>java"
+    - "com.test.java.dto > "MemberDto.java"
+    - template > "join.html"
+    
+11. PasswordEncoder
+    - SecurityConfig.java > 빈 등록
+    
+12. DB 기반 로그인 구현
+- com.test.java.dto > "CustomUserDetails.java" // DTO > 인증 사용자 
+- com.test.java.service > "CustomUserDetailsService.java" 
+
+13. 예외처리(401, 403)
+    - 401(Unauthorized) > 익명이 인증 URL 접근
+    - 403(Forbidden)    > 인증은 했지만 권한 없는 URL 접근
+                        > CORS 토큰 이상
+    - tempaltes > "denied.html"(403)
+    
+    - SecurityConfig.java > 핸들러 등록
+    
+14. 로그아웃
+    14.1 로그아웃 페이지 (FM)
+        - 로그아웃 버튼 > 로그아웃
+    14.2 직접 링크
+    14.3 1+2 (1번 방법에서 로그아웃을 form으로 post 처리()
+    
+15. 메뉴 처리
+    - xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+
+
+

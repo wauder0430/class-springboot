@@ -1,0 +1,29 @@
+프로젝트 생성
+- Name: "jsp" (v)
+- Language: Java
+- Type: Gradle - Groovy
+- Group: "com.test"
+- Artifact: "jsp"
+- Package name: "com.test.java"
+- Java: 21
+- Packaging: jar
+- Dependencies: (v)
+    - Spring Web
+
+혹시라도 JSP를 쓴다면
+
+Spring Boot 
+- 더 이상 JSP를 기본으로 제공하지 않는다.
+- 톰캣 의존성 낮추기 > JSP 기본 제공X
+- 스프링 부트 > Thymeleaf 선택
+
+
+JSP 의존성 추가
+- 내장 톰캣 + JSP 처리
+
+
+파일 생성하기
+- "com.test.java.controller" > "TestController.java"
+
+뷰 리졸버 설정하기
+- "application.properties" 설정

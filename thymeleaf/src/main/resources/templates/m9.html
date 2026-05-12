@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Thymeleaf</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+	<!-- m9.html -->
+    <h1>제어 속성</h1>
+    
+    <!-- <c:if test="${seq > 0}">
+        <div>${seq}는 양수입니다.</div>
+    </c:if> -->
+    
+    
+    <div th:if="${seq > 0}"><span th:text="${seq}"></span>는 양수입니다.</div>
+    
+    <div th:if="${seq > 0}" th:text="${seq} + '는 양수입니다.'"></div>
+    <div th:if="${seq > 0}" th:text="|${seq}는 양수입니다.|"></div>
+    <div th:if="${seq > 0}">[[${seq}]]는 양수입니다.</div>
+    
+    <hr>
+    
+    <div th:if="${seq > 0}">양수입니다.</div>
+    <div th:if="${seq < 0}">음수입니다.</div>
+    <div th:if="${seq == 0}">0입니다.</div>
+    
+    <hr>
+    
+    <div th:if="${seq > 0}">양수입니다.</div>
+    <div th:unless="${seq > 0}">음수입니다.</div>
+    
+    <hr>
+    
+    <div th:switch="${mode}">
+        <div th:case="add">추가하기</div>
+        <div th:case="edit">수정하기</div>
+        <div th:case="del">삭제하기</div>
+        <div th:case="*">기타</div>
+    </div>
+    
+    <hr>
+    
+    <ul>
+        <li th:each="name : ${names}" th:text="${name}"></li> <!-- *** -->
+    </ul>
+    
+    <ul>
+        <li th:each="dto : ${list}" th:text="${dto.name} + '-' + ${dto.age}"></li>
+    </ul>
+    
+    <hr>
+    
+    <div th:each="num : ${#numbers.sequence(1, 10)}" th:text="${num}"></div>
+    
+    <hr>
+    
+    <div th:if="${seq > 0}">10은 양수입니다.</div>
+    
+    <!--  
+        1. 타임리프의 대부분의 기능 'th:속성=""' 이다.
+        2. 유일하게 타임리프 태그가 1개 있다.
+            - <th:block></th:block>
+            - <div>역할: 아무 의미 없음
+    -->
+    
+    <th:block th:if="${seq > 0}">
+        <div>10은 양수입니다.</div>
+    </th:block>
+    
+    <hr>
+    
+    <h1>주소록</h1>
+    
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>성별</th>
+            <th>주소</th>
+        </tr>
+        <tr th:each="dto: ${list}" th:object="${dto}">
+            <td th:text="*{seq}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{age}"></td>
+            <td th:text="*{gender}"></td>
+            <td th:text="*{address}"></td>
+        </tr>
+    </table>
+    
+</body>
+</html>

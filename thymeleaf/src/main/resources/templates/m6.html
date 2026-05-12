@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Thymeleaf</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+	<!-- m6.html -->
+    <h1>포맷팅</h1>
+	
+    <h2>숫자</h2>
+    <div th:text="${num1}"></div>
+    <div th:text="${#numbers.formatInteger(num1, 0, 'COMMA')}"></div>
+    
+    <div th:text="${num2}"></div>
+    <div th:text="${#numbers.formatInteger(num2, 0, 'COMMA')}"></div>
+    <div th:text="${#numbers.formatDecimal(num2, 0, 2)}"></div>
+    <div th:text="${#numbers.formatDecimal(num2, 0, 'COMMA', 2, 'POINT')}"></div>
+    
+    
+    
+    <h2>날짜</h2>
+    
+    <!-- <div th:text="${now}"></div> -->
+    <div th:text="${#dates.year(now)}"></div>
+    <div th:text="${#dates.month(now)}"></div>
+    <div th:text="${#dates.monthName(now)}"></div>
+    <div th:text="${#dates.monthNameShort(now)}"></div>
+    <div th:text="${#dates.day(now)}"></div>
+    <div th:text="${#dates.hour(now)}"></div>
+    <div th:text="${#dates.minute(now)}"></div>
+    <div th:text="${#dates.second(now)}"></div>
+    <div th:text="${#dates.millisecond(now)}"></div>
+    <div th:text="${#dates.dayOfWeek(now)}"></div>
+    <div th:text="${#dates.dayOfWeekName(now)}"></div>
+    <div th:text="${#dates.dayOfWeekNameShort(now)}"></div>
+    
+    <div th:text="${#dates.format(now)}"></div>
+    <div th:text="${#dates.format(now, 'yyyy-MM-dd hh:mm:ss')}"></div>
+    
+    
+</body>
+</html>

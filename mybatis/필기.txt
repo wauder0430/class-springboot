@@ -1,0 +1,31 @@
+프로젝트 생성
+- Name: "mybatis" (v)
+- Language: Java
+- Type: Gradle - Groovy
+- Group: "com.test"
+- Artifact: "mybatis"
+- Package name: "com.test.java"
+- Java: 21
+- Packaging: jar
+- Dependencies: (v)
+    - Spring Web
+    - Lombok
+    - Oracle Driver
+    - MyBatis Framework
+
+
+
+이전 방식 > XML > DBCP(HikariCP) + Mybatis 설정
+현재 방식 > 대부분의 공통 설정 구현 완료 > 남아 있는 설정 추가
+
+DB 설정 
+- application.properties
+
+단위 테스트
+- src/test/java > com.test.java > "DBTests.java"
+
+
+파일 생성하기
+- "com.test.java.controller" > "TestController.java"
+- "com.test.java.model" > "AddressDao.java"
+                        > "addressDto.java"

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>oauth2</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+    <!-- join.html -->
+    <div th:replace="~{inc/header.html :: header}"></div>
+    
+    <h2>Join</h2>
+    <p>추가정보를 입력합니다.</p>
+    
+    <form method="POST" action="/joinok">
+    <table class="vertical content">
+        <tr>
+            <th>이름</th>
+            <td><input type="text" name="name" class="short" required th:value="${name}"></td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td><input type="email" name="email" class="long" required th:value="${email}"></td>
+        </tr>
+    </table>
+    <div>
+        <button>가입하기</button>
+    </div>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- m1.html -->
+    
+    <!--
+        Thymeleaf Standard Expression, 타임 리프 표현식
+        - EL + JSTL 역할
+        
+        1. Variable Expression, 변수 표현식
+        2. Selection Variable Expression, 선택 변수 표현식
+        3. Message Expression, 메시지 표현식
+        4. Link URL Expression, 링크 표현식
+        5. Fragment Expression, 조각 페이지 표현식
+        
+        1. Variable Expression, 변수 표현식
+        - ${}
+        - EL 역할
+        - 컨트롤러로부터 전달된 값을 출력/사용하는 용도
+        
+        *** 타임리프의 대부분 표현
+        - th 접두어로 시작한다.
+        - 대다수(99%)가 HTML 태그의 속성 형태로 표현(*****)
+        - 타임리프 태그는 딱 1개만 제공(수업기준)
+        
+    -->
+    
+    <h1>Thymeleaf</h1>
+    
+    <h2>변수 표현식</h2>
+    
+    <div th:text="${count}"></div>
+    <div th:text="${name}"></div>
+    
+    <div th:text="${count}"></div>
+    
+    <div th:text="123">count: </div>
+    <div>123</div>
+    <div th:text="'홍길동'">name: </div>
+    
+    <hr>
+    
+    <div>숫자: 100</div>
+    <div>이름: 홍길동</div>
+    
+    <div th:text="'숫자: ' + ${count}"></div>
+    
+    <div th:text="'숫자: ' + ${count}">권장</div>
+    <div th:text="${'숫자: ' + count}">비권장</div>
+ 
+    
+    <div>이름: <span th:text="${name}"></span></div>
+    
+    <hr>
+    
+    <!-- DTO 출력 -->
+    <!--<div th:text="${dto}"></div>-->
+    <ul>
+        <li th:text="${dto.seq}"></li>        
+        <li th:text="${dto.name}"></li>        
+        <li th:text="${dto.age}"></li>
+        <li th:text="${dto.address}"></li>
+        <li th:text="${dto.gender}"></li>
+    </ul>
+    
+    <!-- Map 출력 -->
+    <ul>
+        <li th:text="${map}"></li>        
+        <li th:text="${map.get('red')}"></li>
+        <li th:text="${map['red']}"></li>
+        <li th:text="${map.red}"></li>
+        <li th:text="${map.yellow}"></li>
+        <li th:text="${map.blue}"></li>
+    </ul>
+    
+    
+       
+</body>
+</html>

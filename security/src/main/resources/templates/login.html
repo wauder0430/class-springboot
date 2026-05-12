@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Thymeleaf</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+	<!-- login.html -->
+    <div th:replace="~{inc/header.html :: header}"></div>
+    
+    <h2>Login</h2>
+	
+    <form method="POST" action="/loginok">
+    <table class="vertical content">
+        <tr>
+            <th>아이디</th>
+            <td><input type="text" name="username" class="short" required></td>
+        </tr>
+        <tr>
+            <th>암호</th>
+            <td><input type="password" name="password" class="short" required></td>
+        </tr>
+    </table>
+    <div>
+        <button>로그인</button>
+    </div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    </form>
+    
+</body>
+</html>

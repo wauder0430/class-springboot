@@ -1,0 +1,154 @@
+프로젝트 생성
+- Name: "jpa"
+- Language: Java
+- Type: Gradle - Groovy
+- Group: "com.test"
+- Artifact: "jpa"
+- Package name: "com.test.java"
+- Java: 21
+- Packaging: jar
+- Dependencies:
+    - Spring Web
+    - Lombok
+    - Oracle Driver
+    - Thymeleaf
+    - Spring Boot DevTools
+    - Spring Data JPA
+    
+
+
+JPA, Java Persistence API
+- 자바 진영 > ORM 기술 표준으로 사용되는 인터페이스
+- ORM(Object-Relational Mapping)
+
+
+자바(객체) <- (데이터) -> 오라클(테이블)
+
+class Test <-  (매핑)  -> tblAddress
+
+자바의 데이터 > insert ... (?, ?)
+
+오라클 데이터 > rs.getString(컬럼)
+
+
+
+JDBC 기반 기술
+1. MyBatis
+    - Mapping Framework
+    - 오라클 레코드 > (전달) 클래스 객체
+    - Dto dto = template.selectOne("sql")
+    
+2. JPA 
+    - ORM
+    - 자바(객체) <-> 오라클(테이블)
+    - 모든 DB 데이터 > 자바처럼 접근 + 조작
+    - ORM > 구현체 > Hibernate
+    
+    
+JPA 설정하기
+- application.properties > application.yml
+- JDBC(HikariCP) 설정
+- JPA 설정
+
+
+
+파일 생성하기
+- "com.test.java.controller" > "TestController.java"
+- "com.test.java.entity" > "Item.java"(***************)
+- "com.test.java.model" > "ItemDto.java"
+- "com.test.java.repository" > "ItemRepository.java" (I)
+- templates > "result.html"
+
+
+
+
+
+
+ORM, Object Relational Mapping
+- 객체를 관계형 DB의 테이블에 매핑하는 기술
+- 사람(객체 조작) > ORM > DB(반영)
+
+
+JPA
+- ORM을 자바 진영에서 사용하기 위해 정립한 규칙
+
+Hibernate
+- JPA > 실체화 기술
+
+----------------------------------------------------
+
+JPA > DB 조작 > 방식
+
+1. Query Method
+- 정해진 키워드 + 컬럼명을 사용 > 메서드명 > JPA가 메서드명을 분석해서 SQL 자동으로 생성
+- 단순 + 많이 사용
+- 복잡한 업무 불가능
+    - 집계 함수 불가능(count() 예외)
+    - 특정 컬럼만 가져오기 불가능 > 전체 컬럼만 가져오기(엔티티 반환)
+    - 서브 쿼리 불가능
+    - 조인 일부 가능 or 불가능
+    
+2. JPQL
+- 쿼리를 직접 생성하는 방법
+- 엔티티를 중심으로 작성하는 특별한 SQL
+
+3. Native Query
+- 쿼리를 직접 생성하는 방법
+- 진짜 SQL
+- 최후의 수단
+
+4. Query DSL
+- JPA 기술 아님
+- 독립된 기술 > 주로 JPA와 연결해서 사용
+- JPQL > 작성 도구 > 빌더 도구(쿼리를 작성하는 도구)
+
+
+
+
+엔티티 관계 
+1. 단방향 (X 1만 구현하는 경우는 없음)
+    - 부모 > (참조) > 자식
+    
+2. 단방향 (*****)
+    - 자식 > (참조) > 부모
+    
+3. 양방향 (***)
+    - 부모 > (참조) > 자식
+    - 자식 > (참조) > 부모
+    
+
+
+
+Query DSL
+- build.gradle
+- 의존성 추가 + 설정
+
+Query DSL 설정 파일 
+- "com.test.java.config" > "QueryDSLConfig.java" // 스프링 빈 파일(환경 파일)
+
+
+
+
+
+
+
+
+
+hibernate:
+      ddl-auto: none
+      
+1. none          
+2. create   
+3. update   
+4. validate 
+
+1. none: ERD + SQL(DDL) > JPA + Entity > Repository 사용
+
+2. create: JPA + Entity > 애플리케이션 시작 + *** 자동으로 엔티티가 DB에 테이블을 생성 > Repository 사용
+    - 애플리케이션 재시작 > 새로운 테이블 생성 (주로 테스트용)
+    
+3. update: JPA + Entity > 애플리케이션 시작 + *** 자동으로 엔티티가 DB에 테이블을 생성 > Repository 사용
+    - 애플리케이션 재시작 > 변경된 엔티티만 DB에 반영
+    
+4. validate: ERD + SQL(DDL) > JPA + Entity > Repository 사용
+    - 애플리케이션 재시작 > 실제 DB 테이블과 엔티티 비교 > 차이가 있는지 검증

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>JPA</title>
+    <link rel="stylesheet" href="http://bit.ly/3WJ5ilK" />
+</head>
+<body>
+	<!-- result.html -->
+    <h1>JPA</h1>
+    
+    <!-- /m2 -->
+    <th:block th:if="${dto}">
+    <h2 th:text="${dto.name}">상품명</h2>
+    <div th:text="${dto}">모든 객체 정보</div>
+	</th:block>
+    
+    <!-- /m6 -->
+    <div th:text="${count}"></div>
+    <div th:text="${result}"></div>
+    
+    
+    <!-- /m7 -->
+    <table th:if="${dlist}">
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>가격</th>
+            <th>색상</th>
+            <th>수량</th>
+            <th>설명</th>
+        </tr>
+        <tr th:each="dto: ${dlist}" th:object="${dto}">
+            <td th:text="*{seq}"></td>
+            <td th:text="*{name}"></td>
+            <td th:text="*{price}"></td>
+            <td th:text="*{color}"></td>
+            <td th:text="*{qty}"></td>
+            <td th:text="*{description}"></td>
+        </tr>
+    </table>
+    <div th:utext="${temp}"></div>
+    
+    <hr>
+    
+    <table th:if="${blist}">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>이름</th>
+            <th>태그</th>
+        </tr>
+        <tr th:each="board : ${blist}">
+            <td th:text="${board.seq}"></td>
+            <td th:text="${board.subject}"></td>
+            <td th:text="${board.user.name} + ':' + ${board.user.userInfo.age}"></td>
+            <td>
+                <th:block th:each="tagging : ${board.tagging}">
+                    <div th:text="${tagging.tag.tag}"></div>
+                </th:block>
+            </td>
+        </tr>
+    </table>
+    
+    <hr>
+    
+    <ul>
+        <li th:each="name: ${names}" th:text="${name}"></li>
+    </ul>
+    
+    <hr>
+    
+    <th:block th:each="tuple : ${tlist}">
+        <h3 th:text="${tuple.get(0, String)}">상품명</h3>
+        <ul>
+            <li th:text="|색상: ${tuple.get(1, String)}|"></li>
+            <li th:text="|수량: ${tuple.get(2, Integer)}|"></li>
+        </ul>
+    </th:block>
+    
+    <hr>
+    <table th:if="${tupleList}">
+        <tr>
+            <th>이름</th>
+            <th>가격</th>
+            <th>색상</th>
+            <th>같은 색상의 평균 가격</th>
+        </tr>
+        <tr th:each="tuple : ${tupleList}">
+            <td th:text="${tuple.get(0, String)}"></td>
+            <td th:text="${tuple.get(1, Integer)}"></td>
+            <td th:text="${tuple.get(2, String)}"></td>
+            <td th:text="${tuple.get(3, Double)}"></td>
+        </tr>
+    </table>
+    
+    <hr>
+    
+    <table th:if="${ulist}">
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>나이</th>
+            <th>주소</th>
+        </tr>
+        <tr th:each="user : ${ulist}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <th:block th:if="${user.userInfo}">
+            <td th:text="${user.userInfo.age}"></td>
+            <td th:text="${user.userInfo.address}"></td>
+            </th:block>
+            <th:block th:unless="${user.userInfo}">
+            <td></td> 
+            <td></td> 
+            </th:block>
+        </tr>
+    </table>
+    
+</body>
+</html>
